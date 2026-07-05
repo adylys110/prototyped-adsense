@@ -29,11 +29,43 @@ nav a:hover { color: var(--primary); }
 main { display: flex; flex-direction: column; gap: 2rem; }
 
 /* Ad Slots (Optimized for AdSense POV) */
-.ad-slot { background-color: var(--ad-bg); border: 1px dashed #D1D5DB; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; }
+.ad-slot { background-color: var(--ad-bg); border: 1px dashed #D1D5DB; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; position: relative; }
 .ad-leaderboard { width: 100%; max-width: 728px; height: 90px; margin: 2rem auto 0; }
-.ad-sidebar { width: 300px; height: 250px; margin-bottom: 2rem; }
+.ad-sidebar { width: 300px; min-width: 300px; max-width: 300px; height: 250px; min-height: 250px; max-height: 250px; margin-bottom: 2rem; }
 .ad-in-content { width: 100%; max-width: 728px; height: 90px; margin: 2rem auto; border-radius: 8px; }
-.ad-slot iframe { width: 100% !important; height: 100% !important; max-width: 100% !important; max-height: 100% !important; display: block; border: 0; }
+
+/* Force all ad iframe wrappers to fill the slot area */
+.ad-sidebar,
+.ad-sidebar *,
+.ad-sidebar iframe,
+.ad-sidebar div,
+.ad-sidebar div iframe,
+.ad-sidebar div div,
+.ad-sidebar div div iframe {
+  width: 300px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  height: 250px !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+
+.ad-slot iframe,
+.ad-slot > div,
+.ad-slot > div > iframe,
+.ad-slot > div > div,
+.ad-slot > div > div > iframe {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  border: 0 !important;
+}
 
 /* Post Cards */
 .post-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
